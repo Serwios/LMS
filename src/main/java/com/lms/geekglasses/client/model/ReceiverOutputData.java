@@ -1,5 +1,8 @@
 package com.lms.geekglasses.client.model;
 
+import lombok.ToString;
+
+@ToString
 public class ReceiverOutputData {
     public CommandStatus status;
     public String outputMassage;
@@ -7,13 +10,5 @@ public class ReceiverOutputData {
     public ReceiverOutputData(CommandStatus status, String outputMassage) {
         this.status = status;
         this.outputMassage = outputMassage;
-    }
-
-    @Override
-    public String toString() {
-        return "ReceiverOutputData{" +
-                "status=" + status +
-                ", outputMassage='" + outputMassage + '\'' +
-                '}';
     }
 }

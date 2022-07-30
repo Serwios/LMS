@@ -1,13 +1,47 @@
 package com.lms.geekglasses.client.sender;
 
+import lombok.SneakyThrows;
+
+import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.util.Scanner;
+import java.util.*;
 
 public class MessageSender implements Runnable {
-    private static final String IP = "localhost";
+    private static String IP = "localhost";
     private static final int PORT = 8199;
+
     private final Scanner globalScanner = new Scanner(System.in);
+    private final NetworkIdentifier networkIdentifier = new NetworkIdentifier();
+    private List<String> availableIps = new ArrayList<>();
+
+    @SneakyThrows
+    @Override
+    public void run() {
+        availableIps = identifyNetwork();
+        if (!availableIps.isEmpty()) {
+            selectReceiver();
+        } else {
+            System.out.println("Please make a request > ");
+        }
+
+        inputReader();
+    }
+
+    public void selectReceiver() {
+        System.out.println("Please, enter message receiver ip: ");
+        Scanner scanner = new Scanner(System.in);
+        String ip = scanner.nextLine();
+        if (availableIps.contains(ip)) {
+            IP = ip;
+        } else {
+            System.out.println("Sorry, I don`t see this ip");
+        }
+    }
+
+    public List<String> identifyNetwork() throws IOException {
+        return networkIdentifier.identifyNearbyDevices();
+    }
 
     public void inputReader() {
         while (true) {
@@ -26,10 +60,5 @@ public class MessageSender implements Runnable {
         } catch (Exception ignored) {
             ignored.printStackTrace();
         }
-    }
-
-    @Override
-    public void run() {
-        inputReader();
     }
 }
