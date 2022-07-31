@@ -29,13 +29,16 @@ public class MessageSender implements Runnable {
     }
 
     public void selectReceiver() {
-        System.out.println("Please, enter message receiver ip: ");
-        Scanner scanner = new Scanner(System.in);
-        String ip = scanner.nextLine();
-        if (availableIps.contains(ip)) {
-            IP = ip;
-        } else {
-            System.out.println("Sorry, I don`t see this ip");
+        while (true) {
+            System.out.println("Please, enter receiver ip: ");
+            Scanner scanner = new Scanner(System.in);
+            String ip = scanner.nextLine();
+            if (availableIps.contains(ip)) {
+                IP = ip.replace("/", "");
+                return;
+            } else {
+                System.out.println("Sorry, I don`t see this ip");
+            }
         }
     }
 

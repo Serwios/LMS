@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NetworkResolver {
-    private final String subNet = "192.168.1";
+    private final String subNet = "192.168.0";
 
     public List<String> resolveAvailableComputersIps() throws IOException {
         List<String> listOfIps = new ArrayList<>();

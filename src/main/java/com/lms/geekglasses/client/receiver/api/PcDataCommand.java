@@ -7,10 +7,7 @@ import oshi.SystemInfo;
 public class PcDataCommand implements BaseCommandClass {
     @Override
     public ReceiverOutputData performCommand() {
-        ReceiverOutputData receiverOutputData = new ReceiverOutputData(CommandStatus.SUCCESS, new SystemInfo().getHardware().getProcessor().toString());
-        System.out.println(receiverOutputData);
-
-        return receiverOutputData;
+        return new ReceiverOutputData(CommandStatus.SUCCESS, new SystemInfo().getHardware().getProcessor().toString());
     }
 
     @Override
