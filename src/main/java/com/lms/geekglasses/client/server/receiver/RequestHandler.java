@@ -1,17 +1,16 @@
 package com.lms.geekglasses.client.server.receiver;
 
 import com.lms.geekglasses.client.model.CommandStatus;
-import com.lms.geekglasses.client.model.ReceiverOutputData;
+import com.lms.geekglasses.client.model.ReceiverTransferData;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
-import java.util.Optional;
 
 public class RequestHandler {
     private static final RequestParser parser = new RequestParser();
 
-    public static ReceiverOutputData handle(Socket accept) throws IOException {
+    public static ReceiverTransferData handle(Socket accept) {
         try(final InputStream inputStream = accept.getInputStream()) {
             final StringBuilder requestBuilder = new StringBuilder();
             int read;
@@ -22,6 +21,6 @@ public class RequestHandler {
             e.printStackTrace();
         }
 
-        return new ReceiverOutputData(CommandStatus.FAILED, "Failed tp parse msg");
+        return new ReceiverTransferData(CommandStatus.FAILED, "Failed to parse msg");
     }
 }

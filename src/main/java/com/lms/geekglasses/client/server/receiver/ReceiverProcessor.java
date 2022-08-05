@@ -1,14 +1,15 @@
 package com.lms.geekglasses.client.server.receiver;
 
-import com.lms.geekglasses.client.model.ReceiverOutputData;
+import com.lms.geekglasses.client.sender.DataSender;
 
-import java.io.IOException;
 import java.net.Socket;
 
 import static com.lms.geekglasses.client.server.receiver.RequestHandler.handle;
 
 public class ReceiverProcessor {
-    public ReceiverOutputData processRequestAndSendBackResponse(Socket accept) throws IOException {
-        return handle(accept);
+    private final DataSender dataSender = new DataSender();
+
+    public void processRequestAndSendBackResponse(Socket accept) {
+        dataSender.sendData(handle(accept), "", 0);
     }
 }

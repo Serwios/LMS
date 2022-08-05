@@ -24,8 +24,7 @@ public class Server implements Runnable {
         try(ServerSocket serverSocket = new ServerSocket(port)) {
             while (true) {
                 final Socket accept = serverSocket.accept();
-                final PrintWriter output = new PrintWriter(accept.getOutputStream(),true);
-                output.println(receiverProcessor.processRequestAndSendBackResponse(accept));
+                receiverProcessor.processRequestAndSendBackResponse(accept);
             }
         }
     }

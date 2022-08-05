@@ -1,14 +1,14 @@
 package com.lms.geekglasses.client.server.receiver.api;
 
 import com.lms.geekglasses.client.model.CommandStatus;
-import com.lms.geekglasses.client.model.ReceiverOutputData;
+import com.lms.geekglasses.client.model.ReceiverTransferData;
 import oshi.SystemInfo;
 
 public class SomeDataCommand implements BaseCommandClass {
     @Override
-    public ReceiverOutputData performCommand() {
+    public ReceiverTransferData performCommand() {
         final String computerSystem = new SystemInfo().getHardware().getComputerSystem().toString();
-        return new ReceiverOutputData(CommandStatus.SUCCESS, computerSystem);
+        return new ReceiverTransferData(CommandStatus.SUCCESS, computerSystem);
     }
 
     @Override

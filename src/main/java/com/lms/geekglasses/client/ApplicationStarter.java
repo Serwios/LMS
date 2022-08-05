@@ -1,6 +1,6 @@
 package com.lms.geekglasses.client;
 
-import com.lms.geekglasses.client.sender.MessageSender;
+import com.lms.geekglasses.client.sender.MessageSenderManager;
 import com.lms.geekglasses.client.server.Server;
 
 import java.util.concurrent.ExecutorService;
@@ -16,6 +16,6 @@ public class ApplicationStarter {
 
         final ExecutorService executorService = Executors.newFixedThreadPool(2);
         executorService.execute(new Server());
-        executorService.execute(new MessageSender());
+        executorService.execute(new MessageSenderManager());
     }
 }
