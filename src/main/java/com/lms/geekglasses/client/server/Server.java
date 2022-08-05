@@ -23,6 +23,7 @@ public class Server implements Runnable {
         try(ServerSocket serverSocket = new ServerSocket(port)) {
             while (true) {
                 final Socket requestConnection = serverSocket.accept();
+                System.out.println(new String(requestConnection.getInputStream().readAllBytes()));
                 receiverProcessor.processRequestAndSendBackResponse(requestConnection, port);
             }
         }

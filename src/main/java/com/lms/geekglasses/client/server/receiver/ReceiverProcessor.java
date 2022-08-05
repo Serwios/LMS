@@ -12,9 +12,9 @@ public class ReceiverProcessor {
     private final DataSender dataSender = new DataSender();
 
     public void processRequestAndSendBackResponse(Socket requestConnection, int port) throws IOException {
-        ReceiverTransferData handle = handle(requestConnection);
+        ReceiverTransferData receiverTransferData = handle(requestConnection);
         requestConnection.close();
 
-        dataSender.sendData(handle, requestConnection.getInetAddress().getHostName(), port);
+        dataSender.sendData(receiverTransferData, requestConnection.getInetAddress().getHostName(), port);
     }
 }
