@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NetworkResolver {
-    private final String subNet = "192.168.0";
+    private static final String SUBNET = "192.168.0";
 
     public List<String> resolveAvailableComputersIps() throws IOException {
         List<String> listOfIps = new ArrayList<>();
@@ -15,7 +15,7 @@ public class NetworkResolver {
 
         final int timeout = 100;
         for (int i = 1; i < 255; i++) {
-            String host = subNet + "." + i;
+            String host = SUBNET + "." + i;
             InetAddress inetAddress = InetAddress.getByName(host);
 
             if (inetAddress.isReachable(timeout)) {

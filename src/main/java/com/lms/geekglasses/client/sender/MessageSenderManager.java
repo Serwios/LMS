@@ -8,6 +8,8 @@ import java.util.*;
 
 public class MessageSenderManager implements Runnable {
     private static String IP = "localhost";
+
+    //TODO: Move to config
     private static final int PORT = 8199;
 
     private final Scanner globalScanner = new Scanner(System.in);

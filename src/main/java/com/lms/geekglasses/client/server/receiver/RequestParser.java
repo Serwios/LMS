@@ -1,5 +1,6 @@
 package com.lms.geekglasses.client.server.receiver;
 
+import com.lms.geekglasses.client.model.CommandStatus;
 import com.lms.geekglasses.client.model.ReceiverTransferData;
 import com.lms.geekglasses.client.server.receiver.api.BaseCommandClass;
 import com.lms.geekglasses.client.server.receiver.api.CommandProvider;
@@ -18,7 +19,6 @@ public class RequestParser {
             }
         }
 
-        System.out.println("\nSorry, I didn`t recoginse msg: " + msg);
-        return null;
+        return new ReceiverTransferData(CommandStatus.FAILED, "Sorry, I didn`t recoginse msg: " + msg);
     }
 }
