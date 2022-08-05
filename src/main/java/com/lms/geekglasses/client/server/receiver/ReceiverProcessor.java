@@ -10,6 +10,6 @@ public class ReceiverProcessor {
     private final DataSender dataSender = new DataSender();
 
     public void processRequestAndSendBackResponse(Socket accept) {
-        dataSender.sendData(handle(accept), accept.getRemoteSocketAddress().toString(), 8199);
+        dataSender.sendData(handle(accept), accept.getInetAddress().toString(), 8199);
     }
 }
