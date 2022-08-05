@@ -22,7 +22,7 @@ public class DataSender {
         if (null == ip) {
             throw new IllegalArgumentException("Failed to validate ip, ip is null");
         } else {
-            return ip.replace("/", "");
+            return ip.replace("/", "").trim();
         }
     }
 }
