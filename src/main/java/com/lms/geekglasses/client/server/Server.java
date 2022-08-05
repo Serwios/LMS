@@ -22,8 +22,8 @@ public class Server implements Runnable {
     private void startServer(int port) throws IOException {
         try(ServerSocket serverSocket = new ServerSocket(port)) {
             while (true) {
-                final Socket accept = serverSocket.accept();
-                receiverProcessor.processRequestAndSendBackResponse(accept, port);
+                final Socket requestConnection = serverSocket.accept();
+                receiverProcessor.processRequestAndSendBackResponse(requestConnection, port);
             }
         }
     }
