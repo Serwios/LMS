@@ -1,17 +1,19 @@
-package com.lms.geekglasses.client.receiver.api;
+package com.lms.geekglasses.client.server.receiver.api;
 
 import com.lms.geekglasses.client.model.ReceiverOutputData;
 
 import java.io.IOException;
 
-public class DieCommand implements BaseCommandClass {
+public class RunCmdCommand implements BaseCommandClass {
     @Override
     public ReceiverOutputData performCommand() throws IOException {
-        throw new Error();
+        System.out.println("Not implemented");
+
+        return null;
     }
 
     @Override
     public String getCommandName() {
-        return "/die";
+        return "/getCmd";
     }
 }

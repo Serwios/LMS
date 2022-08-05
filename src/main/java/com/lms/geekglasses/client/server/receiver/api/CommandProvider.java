@@ -1,4 +1,4 @@
-package com.lms.geekglasses.client.receiver.api;
+package com.lms.geekglasses.client.server.receiver.api;
 
 import lombok.Getter;
 
@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Getter
 public class CommandProvider {
-    private Set<BaseCommandClass> commands = new HashSet<>();
+    private final Set<BaseCommandClass> commands = new HashSet<>();
 
     public CommandProvider() {
         this.commands.add(new PcDataCommand());

@@ -1,4 +1,4 @@
-package com.lms.geekglasses.client.receiver.api;
+package com.lms.geekglasses.client.server.receiver.api;
 
 import com.lms.geekglasses.client.model.CommandStatus;
 import com.lms.geekglasses.client.model.ReceiverOutputData;
@@ -10,7 +10,6 @@ public class SomeDataCommand implements BaseCommandClass {
         final String computerSystem = new SystemInfo().getHardware().getComputerSystem().toString();
         return new ReceiverOutputData(CommandStatus.SUCCESS, computerSystem);
     }
-
 
     @Override
     public String getCommandName() {
