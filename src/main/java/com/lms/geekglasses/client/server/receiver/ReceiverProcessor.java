@@ -9,7 +9,7 @@ import static com.lms.geekglasses.client.server.receiver.RequestHandler.handle;
 public class ReceiverProcessor {
     private final DataSender dataSender = new DataSender();
 
-    public void processRequestAndSendBackResponse(Socket accept) {
-        dataSender.sendData(handle(accept), accept.getInetAddress().toString(), 8199);
+    public void processRequestAndSendBackResponse(Socket accept, int port) {
+        dataSender.sendData(handle(accept), accept.getInetAddress().toString(), port);
     }
 }
