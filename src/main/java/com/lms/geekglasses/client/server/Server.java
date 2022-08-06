@@ -22,9 +22,7 @@ public class Server implements Runnable {
     private void startServer(int port) throws IOException {
         try(ServerSocket serverSocket = new ServerSocket(port)) {
             while (true) {
-                final Socket requestConnection = serverSocket.accept();
-                System.out.println(new String(requestConnection.getInputStream().readAllBytes()));
-                receiverProcessor.processRequestAndSendBackResponse(requestConnection, port);
+                receiverProcessor.processRequestAndSendBackResponse(serverSocket, port);
             }
         }
     }
