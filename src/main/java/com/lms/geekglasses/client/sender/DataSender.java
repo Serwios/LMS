@@ -12,6 +12,7 @@ public class DataSender {
                 OutputStream outputStream = socket.getOutputStream()) {
                 outputStream.write(data.getMassage().getBytes());
                 outputStream.flush();
+
             }
         } catch (Exception ignored) {
             ignored.printStackTrace();
