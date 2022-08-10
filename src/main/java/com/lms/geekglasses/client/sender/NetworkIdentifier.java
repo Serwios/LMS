@@ -9,7 +9,6 @@ public class NetworkIdentifier {
     public List<String> identifyNearbyDevices() throws IOException {
         final List<String> resolvedIps = networkResolver.resolveAvailableComputersIps();
 
-        System.out.println("Welcome: " + networkResolver.getCurrentIpAddress());
         if (resolvedIps.isEmpty()) {
             System.out.println("No available ip, receiver settled to @localhost");
         } else {

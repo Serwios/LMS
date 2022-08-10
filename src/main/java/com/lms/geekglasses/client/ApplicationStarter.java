@@ -12,7 +12,7 @@ public class ApplicationStarter {
     }
 
     private static void startApplication() {
-        System.out.println("Application started > ");
+        System.out.println("LMS started > ");
 
         final ExecutorService executorService = Executors.newFixedThreadPool(2);
         executorService.execute(new Server());
