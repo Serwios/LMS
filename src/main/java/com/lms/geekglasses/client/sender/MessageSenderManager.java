@@ -25,7 +25,7 @@ public class MessageSenderManager implements Runnable {
         availableIps = identifyNetwork();
         final String selectedReceiverIp = selectReceiverIp();
 
-        System.out.println(new Menu(availableIps, InetAddress.getLocalHost().getHostName()));
+        System.out.println(new Menu(availableIps, InetAddress.getLocalHost().getHostName()).getMenu());
         readAndSendInputToReceiver(selectedReceiverIp, PORT);
     }
 
