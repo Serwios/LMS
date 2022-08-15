@@ -6,7 +6,7 @@ import com.lms.geekglasses.client.model.ReceiverTransferData;
 public class HelpCommand implements BaseCommandClass{
     @Override
     public ReceiverTransferData performCommand() {
-        return new ReceiverTransferData(CommandStatus.SUCCESS, CommandProvider.getCommandsAsString());
+        return new ReceiverTransferData(CommandStatus.SUCCESS, CommandProviderUtility.getCommandsAsString());
     }
 
     @Override
