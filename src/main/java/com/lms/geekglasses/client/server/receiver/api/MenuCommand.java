@@ -12,7 +12,7 @@ public class MenuCommand implements BaseCommandClass {
     @Override
     public ReceiverTransferData performCommand() throws IOException {
         final MessageSenderManager messageSenderManager = new MessageSenderManager();
-        final Menu menuCommand = new Menu(messageSenderManager.identifyNetwork(), InetAddress.getLocalHost().getHostName());
+        final Menu menuCommand = new Menu(messageSenderManager.identifyNetwork(), InetAddress.getLocalHost().getHostAddress());
         return new ReceiverTransferData(CommandStatus.SUCCESS, menuCommand.getMenu());
     }
 
