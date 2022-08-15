@@ -15,4 +15,4 @@ The ModelAPI is fully customizable and easily modifiable. You must add your own 
 # Current problems
 * The system does not yet check whether the computers included in the system have run the program, so be careful and run the program on all computers.
 
-* Also, the system is not yet thread-safe. If two computers want the same resource at the same time, then you yourself will need to synchronize it through the ModelAPI.
+* Also, the system is not yet thread-safe. If two computers want the same resource at the same time, then you will need to synchronize it through the ModelAPI.
