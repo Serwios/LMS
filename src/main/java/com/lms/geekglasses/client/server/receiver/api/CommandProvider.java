@@ -15,5 +15,6 @@ public class CommandProvider {
         this.commands.add(new RunCmdCommand());
         this.commands.add(new SomeDataCommand());
         this.commands.add(new DieCommand());
+        this.commands.add(new TestCommand());
     }
 }
