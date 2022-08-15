@@ -2,7 +2,6 @@ package com.lms.geekglasses.client.server.receiver;
 
 import com.lms.geekglasses.client.model.ReceiverTransferData;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 
@@ -15,16 +14,15 @@ public class RequestHandler {
             int read;
             while ((read = inputStream.read()) != -1) requestBuilder.append((char) read);
 
-            final String requestString = requestBuilder.toString();
-            if (isRequestIsCommand(requestString)) return parser.parseRequest(requestString);
+            String requestBody = requestBuilder.toString();
+            System.out.println(requestBody);
+            if (requestBody.startsWith("/")) {
+                return parser.parseRequest(requestBody);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return null;
-    }
-
-    private static boolean isRequestIsCommand(String requestBody) {
-        return requestBody.startsWith("/");
     }
 }

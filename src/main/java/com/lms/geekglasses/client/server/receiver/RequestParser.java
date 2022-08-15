@@ -11,8 +11,10 @@ public class RequestParser {
     private final CommandProvider commands = new CommandProvider();
 
     public ReceiverTransferData parseRequest(String msg) throws IOException {
+        msg = msg.trim();
+
         for (BaseCommandClass bc : commands.getCommands()) {
-            if (bc.getCommandName().equals(msg.trim())) {
+            if (bc.getCommandName().equals(msg)) {
                return bc.performCommand();
             }
         }

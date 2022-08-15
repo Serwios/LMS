@@ -1,24 +1,19 @@
 package com.lms.geekglasses.client.server.receiver.api;
 
-import lombok.Data;
 import lombok.Getter;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
 public class CommandProvider {
-    public static final Set<BaseCommandClass> commands = new HashSet<>();
+    private final Set<BaseCommandClass> commands = new HashSet<>();
 
     public CommandProvider() {
-        commands.add(new PcDataCommand());
-        commands.add(new SomeDataCommand());
-        commands.add(new SomeDataCommand());
-        commands.add(new DieCommand());
-        commands.add(new HelpCommand());
-        commands.add(new MenuCommand());
-    }
-
-    public Set<BaseCommandClass> getCommands() {
-        return commands;
+        this.commands.add(new PcDataCommand());
+        this.commands.add(new SomeDataCommand());
+        this.commands.add(new RunCmdCommand());
+        this.commands.add(new SomeDataCommand());
+        this.commands.add(new DieCommand());
     }
 }
