@@ -3,13 +3,15 @@ package com.lms.geekglasses.client.server.receiver;
 import com.lms.geekglasses.client.model.CommandStatus;
 import com.lms.geekglasses.client.model.ReceiverTransferData;
 import com.lms.geekglasses.client.server.receiver.api.BaseCommandClass;
-import com.lms.geekglasses.client.server.receiver.api.CommandProviderUtility;
+import com.lms.geekglasses.client.server.receiver.api.CommandProvider;
 
 import java.io.IOException;
 
 public class RequestParser {
+    private final CommandProvider commands = new CommandProvider();
+
     public ReceiverTransferData parseRequest(String msg) throws IOException {
-        for (BaseCommandClass bc : CommandProviderUtility.commands) {
+        for (BaseCommandClass bc : commands.getCommands()) {
             if (bc.getCommandName().equals(msg.trim())) {
                return bc.performCommand();
             }
