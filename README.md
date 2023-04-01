@@ -1,4 +1,4 @@
-# LMS (Local Managment System)
+# LMS (Local Management System)
 System that can decentralise manage devices in WIFI local network.
 
 The system is based on the communication of computers in a local network. Each computer has a server and a client. And at the same time it can receive and send requests.
