@@ -7,7 +7,6 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 public class DataSender {
-
     public void sendData(TransferData data, String ip, int port) {
         if (data == null) {
             System.out.println("Data is null, cannot send.");
