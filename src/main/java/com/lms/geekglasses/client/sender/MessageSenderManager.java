@@ -4,15 +4,14 @@ import com.lms.geekglasses.client.model.RequestTransferData;
 import lombok.SneakyThrows;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.List;
+import java.util.Scanner;
 
 public class MessageSenderManager implements Runnable {
-    private static String IP = "localhost";
+    private static final String DEFAULT_IP = "localhost";
+    private static final int DEFAULT_PORT = 8199;
 
-    //TODO: Move to config
-    private static final int PORT = 8199;
-
-    private final Scanner globalScanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
     private final NetworkIdentifier networkIdentifier = new NetworkIdentifier();
     private final DataSender dataSender = new DataSender();
 
@@ -21,29 +20,26 @@ public class MessageSenderManager implements Runnable {
     @SneakyThrows
     @Override
     public void run() {
-        //TODO: change to final
         String selectedReceiverIp = null;
-
         availableIps = identifyNetwork();
+
         if (!availableIps.isEmpty()) {
             selectedReceiverIp = selectReceiver();
         } else {
             System.out.println("Please make a request > ");
         }
 
-        inputSender(selectedReceiverIp, PORT);
+        inputSender(selectedReceiverIp, DEFAULT_PORT);
     }
 
     public String selectReceiver() {
         while (true) {
-            System.out.println("Please, enter receiver ip: ");
-            Scanner scanner = new Scanner(System.in);
+            System.out.println("Please enter receiver IP: ");
             String ip = scanner.nextLine();
             if (availableIps.contains(ip)) {
-                IP = ip.replace("/", "");
-                return IP;
+                return ip.replace("/", "");
             } else {
-                System.out.println("Sorry, I don`t see this ip");
+                System.out.println("Sorry, this IP is not available.");
             }
         }
     }
@@ -54,7 +50,8 @@ public class MessageSenderManager implements Runnable {
 
     public void inputSender(String ip, int port) {
         while (true) {
-            final String data = globalScanner.nextLine();
+            System.out.println("Enter data to send: ");
+            String data = scanner.nextLine();
             dataSender.sendData(new RequestTransferData(data), ip, port);
         }
     }
