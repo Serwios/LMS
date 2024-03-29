@@ -7,13 +7,14 @@ public class NetworkIdentifier {
     private final NetworkResolver networkResolver = new NetworkResolver();
 
     public List<String> identifyNearbyDevices() throws IOException {
-        final List<String> resolvedIps = networkResolver.resolveAvailableComputersIps();
+        List<String> resolvedIps = networkResolver.resolveAvailableComputersIps();
+        String currentIpAddress = networkResolver.getCurrentIpAddress();
 
-        System.out.println("Welcome: " + networkResolver.getCurrentIpAddress());
+        System.out.println("Welcome: " + currentIpAddress);
         if (resolvedIps.isEmpty()) {
-            System.out.println("No available ip, receiver settled to @localhost");
+            System.out.println("No available IP addresses; receiver set to localhost.");
         } else {
-            System.out.println("Available ip`s: " + resolvedIps);
+            System.out.println("Available IP addresses: " + resolvedIps);
         }
 
         return resolvedIps;
